@@ -1,0 +1,76 @@
+body {
+  background-color: #470063;
+  color: #fffea9;
+  font-family: "Reenie Beanie", cursive;
+  font-size: 3rem;
+}
+
+h1 {
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+/* form  */
+.addTaskInput {
+  border-color: transparent;
+  background-color: transparent;
+  border-bottom: 1px solid #5800ff;
+  color: #fffea9;
+}
+.addtaskinput:focus-visible {
+  outline: 1px red;
+  border: 1px red solid;
+}
+
+/* tasklist */
+
+div.taskList-wrapper {
+  text-align: center;
+  height: 30vh;
+  margin: 0 auto;
+}
+
+li {
+  list-style: none;
+  background-color: #fffea9;
+  color: #470063;
+  border-radius: 1em;
+}
+.taskText {
+  display: inline-block;
+  padding-right: 60px;
+  width: 70%;
+}
+
+i {
+  padding: 0 10px;
+  font-size: 1rem;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+.editing {
+  background-color: transparent;
+  color: #fffea9;
+  border: 1px solid #fffea9;
+}
+
+@keyframes append-animate {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* animate new task*/
+.new-task {
+  animation: append-animate 0.3s linear;
+}
