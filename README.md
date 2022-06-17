@@ -3,7 +3,7 @@
 ## This application is a ToDo List build with Vanilla JS and DOM Manipulation. :calendar:
 
 The user can:
-- Add new tasks
+- Add new tasks :heavy_plus_sign:
 - Edit new added tasks :pencil2:
 - Mark the new added tasks as checked :white_check_mark:
 - Remove new added tasks :x:
