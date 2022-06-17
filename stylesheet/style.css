@@ -13,12 +13,11 @@ h1 {
 .addTaskInput {
   border-color: transparent;
   background-color: transparent;
-  border-bottom: 1px solid #5800ff;
+  border-bottom: 1px solid #fffea9;
   color: #fffea9;
 }
-.addtaskinput:focus-visible {
-  outline: 1px red;
-  border: 1px red solid;
+.addTaskInput:focus {
+  outline: 1px dashed #fffea9;
 }
 
 /* tasklist */

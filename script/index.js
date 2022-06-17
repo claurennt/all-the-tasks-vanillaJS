@@ -43,13 +43,6 @@ const newTaskInput = document.querySelector("input");
 //grab the task list
 const taskList = document.querySelector(".taskList");
 
-// // attach blur event to existing tastText
-// const taskTextParagraphs = document.querySelectorAll(".taskText");
-
-// taskTextParagraphs.forEach((paragraph) =>
-//   paragraph.addEventListener("blur", removeContentEditable)
-// );
-
 //function that creates a new task element and inserts it into the html
 const createNewTask = () => {
   const newTaskText = newTaskInput.value;
