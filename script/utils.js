@@ -1,7 +1,10 @@
 const removeTaskFromList = (e) => e.target.parentElement.remove();
 
-const markTaskAsChecked = (e) =>
+const markTaskAsChecked = (e) => {
+  console.log("heee");
+
   e.target.parentElement.classList.toggle("checked");
+};
 
 const makeContentEditable = (e) => {
   const paragraph = e.target.previousElementSibling;
@@ -10,6 +13,7 @@ const makeContentEditable = (e) => {
 };
 
 const removeContentEditable = (e) => {
+  console.log(e.target.parentElement);
   e.target.parentElement.classList.remove("editing");
   e.target.contentEditable = false;
 };

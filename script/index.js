@@ -12,27 +12,9 @@ window.addEventListener("load", () => {
 
   taskList.innerHTML = savedTasks;
 
-  //grab the icons next to each task and the paragraph
-  const taskTextParagraphs = document.querySelectorAll(".taskText");
-  const editIcons = document.querySelectorAll('[name="edit"]');
-  const deleteIcons = document.querySelectorAll('[name="delete"]');
-  const checkIcons = document.querySelectorAll('[name="check"]');
-
-  //attach events to each icon
-  deleteIcons.forEach((icon) =>
-    icon.addEventListener("click", removeTaskFromList)
-  );
-
-  checkIcons.forEach((icon) =>
-    icon.addEventListener("click", markTaskAsChecked)
-  );
-
-  editIcons.forEach((icon) =>
-    icon.addEventListener("click", makeContentEditable)
-  );
-
-  taskTextParagraphs.forEach((paragraph) =>
-    paragraph.addEventListener("blur", removeContentEditable)
+  const taskTextParagraphs = document.getElementsByClassName("taskText");
+  [...taskTextParagraphs].forEach((paragraph) =>
+    paragraph.addEventListener("blur", (e) => removeContentEditable(e))
   );
 });
 
@@ -51,29 +33,34 @@ const createNewTask = () => {
   <li class="mb-4 d-flex justify-content-center align-items-center new-task">
   <p class="taskText mb-0">${newTaskText}</p><i class="bi bi-pencil" name="edit"></i><i class="bi bi-check-lg" name="check"></i><i class="bi bi-x-lg" name="delete"></i>
   </li>`;
+
   taskList.insertAdjacentHTML("afterBegin", newTaskTemplate);
 
-  const deleteIcon = document.querySelector('[name="delete"]');
-  deleteIcon.addEventListener("click", removeTaskFromList);
-
-  const checkIcon = document.querySelector('[name="check"]');
-  checkIcon.addEventListener("click", markTaskAsChecked);
-
-  const editIcon = document.querySelector('[name="edit"]');
-  editIcon.addEventListener("click", makeContentEditable);
-
-  const taskText = document.querySelector("p");
-  taskText.addEventListener("blur", removeContentEditable);
+  //binds blur event on paragraph
+  const taskTextParagraph = document.querySelector(".taskText");
+  taskTextParagraph.addEventListener("blur", removeContentEditable);
 };
 
-//add new task to list and reset the form
+//add new task to list when a submit event is fired on the form, then reset the form
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   createNewTask();
   form.reset();
 });
 
-window.addEventListener("beforeunload", () => {
-  console.log("here");
-  saveTasksToLocalStorage(taskList.innerHTML);
+//listens to click events on the parent element and fire each function depending on the name attribute of the clicked button
+taskList.addEventListener("click", (e) => {
+  console.log(e.relatedTarget);
+  const targetName = e.target.getAttribute("name");
+
+  if (targetName === "delete") removeTaskFromList(e);
+
+  if (targetName === "check") markTaskAsChecked(e);
+
+  if (targetName === "edit") makeContentEditable(e);
 });
+
+//saves tasks to local storage when the page is unloaded
+window.addEventListener("beforeunload", () =>
+  saveTasksToLocalStorage(taskList.innerHTML)
+);
