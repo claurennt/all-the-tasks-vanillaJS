@@ -12,8 +12,10 @@ window.addEventListener("load", () => {
 
   taskList.innerHTML = savedTasks;
 
-  const taskTextParagraphs = document.getElementsByClassName("taskText");
-  [...taskTextParagraphs].forEach((paragraph) =>
+  const taskTextParagraphs = document.querySelectorAll(".taskText");
+
+  //binds blur event to each paragraph
+  taskTextParagraphs.forEach((paragraph) =>
     paragraph.addEventListener("blur", (e) => removeContentEditable(e))
   );
 });
@@ -50,7 +52,6 @@ form.addEventListener("submit", (e) => {
 
 //listens to click events on the parent element and fire each function depending on the name attribute of the clicked button
 taskList.addEventListener("click", (e) => {
-  console.log(e.relatedTarget);
   const targetName = e.target.getAttribute("name");
 
   if (targetName === "delete") removeTaskFromList(e);

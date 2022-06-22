@@ -13,7 +13,6 @@ const makeContentEditable = (e) => {
 };
 
 const removeContentEditable = (e) => {
-  console.log(e.target.parentElement);
   e.target.parentElement.classList.remove("editing");
   e.target.contentEditable = false;
 };
