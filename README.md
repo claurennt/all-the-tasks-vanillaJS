@@ -1,6 +1,6 @@
 # all-the-tasks-vanillaJS
 
-## This application is a ToDo List build with Vanilla JS and DOM Manipulation. :calendar:
+## This application is a ToDo List build with Vanilla JS and DOM Manipulation and a Local Storage functionality. :calendar:
 
 The user can:
 - Add new tasks :heavy_plus_sign:
