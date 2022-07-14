@@ -7,6 +7,14 @@ import {
   getTasksFromLocalStorage,
 } from "./utils.js";
 
+//grab the task list
+const taskList = document.querySelector(".taskList");
+
+//grab the form  and the input element
+const form = document.forms[0];
+const newTaskInput = document.querySelector("input");
+
+//on load of the window get the tasks from local storage and render them
 window.addEventListener("load", () => {
   const savedTasks = getTasksFromLocalStorage();
 
@@ -19,13 +27,6 @@ window.addEventListener("load", () => {
     paragraph.addEventListener("blur", (e) => removeContentEditable(e))
   );
 });
-
-//grab the form  and the input element
-const form = document.forms[0];
-const newTaskInput = document.querySelector("input");
-
-//grab the task list
-const taskList = document.querySelector(".taskList");
 
 //function that creates a new task element and inserts it into the html
 const createNewTask = () => {
